@@ -21,7 +21,3 @@ public class User {
 	private String state;
 	
 }
-
-
-
-

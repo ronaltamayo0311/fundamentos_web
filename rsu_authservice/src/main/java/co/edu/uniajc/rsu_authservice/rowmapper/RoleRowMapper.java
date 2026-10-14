@@ -14,8 +14,12 @@ public class RoleRowMapper implements RowMapper<Role> {
 		Role role=new Role();
 		
 		return Role.builder().idRole(rs.getLong("id_role"))
-		.code(rs.getString("code"))
-		.name(rs.getString("name")).build();
+				.name(rs.getString("name"))
+				.code(rs.getString("code"))
+				.description(rs.getString("description"))
+				.dateCreation(rs.getString("date_creation"))
+				.state(rs.getString("state"))
+				.build();
 	}
 		
 }

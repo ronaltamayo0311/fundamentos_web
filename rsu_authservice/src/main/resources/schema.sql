@@ -1,8 +1,11 @@
 -- 1. Catálogo de Roles 
 CREATE TABLE ROLE (
     id_role BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(20) NOT NULL,
     code VARCHAR(50) NOT NULL UNIQUE, -- 'ESTUDIANTE', 'DOCENTE', 'EGRESADO'
-    name VARCHAR(100) NOT NULL
+	description VARCHAR(100) NOT NULL,
+    date_creation timestamp NOT NULL,
+    state VARCHAR(100) NOT NULL
 );
 
 -- 2. Identidad de Usuarios

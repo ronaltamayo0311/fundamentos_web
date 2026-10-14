@@ -1,7 +1,7 @@
 -- 1. Insertar Roles
 
-INSERT INTO ROLE (code, name) VALUES ('SUPER_ADMIN', 'Super administrador del Sistema');
-INSERT INTO ROLE (code, name) VALUES ('ADMIN', 'Administrador normal del Sistema');
+INSERT INTO ROLE (name, code, description, date_creation, state) VALUES ('Super administrador', 'SUPER_ADMIN', 'Super administrador del Sistema', '2026-10-12 08:00:00', 'ACTIVO');
+INSERT INTO ROLE (name, code, description, date_creation, state) VALUES ('Administrador', 'ADMIN', 'Administrador normal del Sistema', '2026-10-12 08:00:00', 'ACTIVO');
 
 -- 2. Insertar Persona (Ejemplo: Administrador/Votante)
 -- Se asume que los campos de la tabla PERSONA siguen el orden del CREATE TABLE proporcionado

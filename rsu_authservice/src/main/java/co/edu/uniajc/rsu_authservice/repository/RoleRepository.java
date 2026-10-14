@@ -24,7 +24,7 @@ public class RoleRepository {
 	public List<Role> showAll(){
 		List<Role> roles = null;
 		try {
-			String sql = "SELECT id_role, code, name FROM role";
+			String sql = "SELECT id_role, name, code, description, date_creation, state FROM role";
 			roles = jdbcTemplate.query(sql, new RoleRowMapper());
 			return roles;
 		}catch (EmptyResultDataAccessException ex) {
@@ -34,7 +34,7 @@ public class RoleRepository {
 	
 	public Optional<Role> findByCode(String code){
 		try {
-			String sql = "SELECT id_role, code, name FROM role WHERE username=?";
+			String sql = "SELECT id_role, name, code, description, date_creation, state FROM role WHERE username=?";
 			Role role = jdbcTemplate.queryForObject(sql, new RoleRowMapper(), code);
 			return Optional.ofNullable(role);
 			
@@ -42,7 +42,6 @@ public class RoleRepository {
 			return Optional.empty();		
 		}
 	}
-
 	
 	public Long getNextId() {
         String sql = "SELECT COALESCE(MAX(id_role), 0) + 1 FROM roles";
@@ -50,10 +49,11 @@ public class RoleRepository {
     }
 
     public int create(Role role) {
-        String sql = "INSERT INTO role (id_role, code, name) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO role (id_role, name, code, description) VALUES (?, ?, ?, ?)";
         return jdbcTemplate.update(sql,
                 role.getIdRole(),
+                role.getName(),
                 role.getCode(),
-                role.getName());
+                role.getDescription());
     }
 }

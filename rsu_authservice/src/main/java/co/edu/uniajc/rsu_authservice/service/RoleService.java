@@ -43,8 +43,9 @@ public class RoleService {
 
 		Role role = new Role();
 		role.setIdRole(roleRepository.getNextId());
-		role.setCode(request.getCode().trim());
 		role.setName(request.getName());
+		role.setCode(request.getCode().trim());
+		//role.setCode(request.getDescription());
 
 		roleRepository.create(role);
 

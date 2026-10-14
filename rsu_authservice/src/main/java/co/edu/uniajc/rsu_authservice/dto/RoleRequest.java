@@ -13,7 +13,8 @@ import lombok.ToString;
 @ToString
 public class RoleRequest {
 
-    private String code;
     private String name;
-
+    private String code;
+    
+    
 }

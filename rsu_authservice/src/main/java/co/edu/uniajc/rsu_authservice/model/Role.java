@@ -16,7 +16,10 @@ import lombok.ToString;
 public class Role {
 
 	private Long idRole;
-	private String code;
 	private String name;
+	private String code;
+	private String description;
+	private String dateCreation;
+	private String state;
 	
 }
