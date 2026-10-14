@@ -48,8 +48,8 @@ public class UserRepository {
         return jdbcTemplate.queryForObject(sql, Long.class);
     }
 
-    public int save(User user) {
-        String sql = "INSERT INTO users (id_user, username, password, name, role, active) VALUES (?, ?, ?, ?, ?, ?)";
+    public int create(User user) {
+        String sql = "INSERT INTO users (id_user, username, password, name, role, state) VALUES (?, ?, ?, ?, ?, ?)";
         return jdbcTemplate.update(sql,
                 user.getIdUser(),
                 user.getUsername(),

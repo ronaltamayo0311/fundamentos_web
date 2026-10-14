@@ -22,7 +22,7 @@ import co.edu.uniajc.rsu_authservice.service.AuthService;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/api/v1/user")
+@RequestMapping("/api/v1/auth")
 public class AuthController {
 	
 	private final AuthService authService;
@@ -38,13 +38,13 @@ public class AuthController {
 		return ApiResponse.ok("Credenciales validas", data);
 	}
 
-    @PostMapping("/register")
+    /*@PostMapping("/register")
     public ApiResponse<User> register(@RequestBody RegisterRequest request, HttpServletRequest httpRequest) {
 
         User user = authService.register(request);
 
         return ApiResponse.ok("Creado con exito",user);
-    }
+    }*/
     
     @PostMapping("/list")
     public ApiResponse<List<User>> register(HttpServletRequest httpRequest) {
