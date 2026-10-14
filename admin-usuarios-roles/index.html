@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Administración de usuarios y roles</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
   <div class="layout">
     <aside class="sidebar" id="sidebar">
@@ -17,27 +20,109 @@
       <p class="sidebar-note">Frontend HTML · CSS · JavaScript</p>
     </aside>
     <div class="main-wrap">
-      <header class="topbar"><button id="menuToggle" class="icon-btn" aria-label="Abrir menú">☰</button><span>Panel de administración</span><span class="pill" id="apiStatus">Sin conexión comprobada</span></header>
+      <header class="topbar"><button id="menuToggle" class="icon-btn" aria-label="Abrir menú">☰</button><span>Panel de
+          administración</span><span class="pill" id="apiStatus">Sin conexión comprobada</span></header>
       <main>
         <section id="usersView" class="view">
-          <div class="heading"><div><p class="eyebrow">GESTIÓN</p><h1>Usuarios</h1><p class="muted">Crea, consulta, actualiza y elimina usuarios del sistema.</p></div><button class="btn primary" id="newUserBtn">+ Nuevo usuario</button></div>
-          <div class="panel"><div class="toolbar"><input type="search" id="userSearch" placeholder="Buscar por nombre, usuario o rol" aria-label="Buscar usuarios"><select id="userStatusFilter" aria-label="Filtrar usuarios por estado"><option value="">Todos los estados</option><option value="ACTIVO">Activo</option><option value="INACTIVO">Inactivo</option></select><button class="btn secondary" id="refreshUsers">Actualizar</button></div>
-            <div class="table-wrap"><table><thead><tr><th>ID</th><th>Usuario</th><th>Nombre</th><th>Rol</th><th>Estado</th><th>Acciones</th></tr></thead><tbody id="usersBody"></tbody></table></div><p class="empty" id="usersEmpty" hidden>No hay usuarios para mostrar.</p>
+          <div class="heading">
+            <div>
+              <p class="eyebrow">GESTIÓN</p>
+              <h1>Usuarios</h1>
+              <p class="muted">Crea, consulta, actualiza y elimina usuarios del sistema.</p>
+            </div><button class="btn primary" id="newUserBtn">+ Nuevo usuario</button>
+          </div>
+          <div class="panel">
+            <div class="toolbar"><input type="search" id="userSearch" placeholder="Buscar por nombre, usuario o rol"
+                aria-label="Buscar usuarios"><select id="userStatusFilter" aria-label="Filtrar usuarios por estado">
+                <option value="">Todos los estados</option>
+                <option value="ACTIVO">Activo</option>
+                <option value="INACTIVO">Inactivo</option>
+              </select><button class="btn secondary" id="refreshUsers">Actualizar</button></div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Usuario</th>
+                    <th>Nombre</th>
+                    <th>Rol</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
+                <tbody id="usersBody"></tbody>
+              </table>
+            </div>
+            <p class="empty" id="usersEmpty" hidden>No hay usuarios para mostrar.</p>
           </div>
         </section>
         <section id="rolesView" class="view" hidden>
-          <div class="heading"><div><p class="eyebrow">GESTIÓN</p><h1>Roles</h1><p class="muted">Administra los roles disponibles para los usuarios.</p></div><button class="btn primary" id="newRoleBtn">+ Nuevo rol</button></div>
-          <div class="panel"><div class="toolbar"><input type="search" id="roleSearch" placeholder="Buscar por nombre o descripción" aria-label="Buscar roles"><button class="btn secondary" id="refreshRoles">Actualizar</button></div><div class="table-wrap"><table><thead><tr><th>ID</th><th>Rol</th><th>Descripción</th><th>Creación</th><th>Estado</th><th>Acciones</th></tr></thead><tbody id="rolesBody"></tbody></table></div><p class="empty" id="rolesEmpty" hidden>No hay roles para mostrar.</p></div>
+          <div class="heading">
+            <div>
+              <p class="eyebrow">GESTIÓN</p>
+              <h1>Roles</h1>
+              <p class="muted">Administra los roles disponibles para los usuarios.</p>
+            </div><button class="btn primary" id="newRoleBtn">+ Nuevo rol</button>
+          </div>
+          <div class="panel">
+            <div class="toolbar"><input type="search" id="roleSearch" placeholder="Buscar por nombre o descripción"
+                aria-label="Buscar roles"><button class="btn secondary" id="refreshRoles">Actualizar</button></div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Código</th>
+                    <th>Descripción</th>
+                    <th>Creación</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
+                <tbody id="rolesBody"></tbody>
+              </table>
+            </div>
+            <p class="empty" id="rolesEmpty" hidden>No hay roles para mostrar.</p>
+          </div>
         </section>
         <section id="settingsView" class="view" hidden>
-          <div class="heading"><div><p class="eyebrow">INTEGRACIÓN</p><h1>Configuración API</h1><p class="muted">Ajusta las rutas de tu backend Spring Boot.</p></div></div>
-          <div class="panel config"><label>URL base de la API <input id="apiBase" type="url" placeholder="http://localhost:8080/api/v1"></label><label>Endpoint usuarios <input id="userPath" type="text" placeholder="/user"></label><label>Endpoint roles <input id="rolePath" type="text" placeholder="/role"></label><label>Token Bearer (opcional) <input id="authToken" type="password" autocomplete="off" placeholder="Solo si la API usa JWT"></label><label class="checkline"><input id="demoMode" type="checkbox"> Activar datos demostrativos (sin llamadas a la API)</label><button id="saveSettings" class="btn primary">Guardar configuración</button><p class="muted small">Por defecto, todas las acciones se envían como POST con JSON. Las operaciones se identifican con las rutas configuradas en <code>js/config.js</code>. El backend debe implementar los contratos correspondientes y permitir CORS desde el origen del frontend. El token se conserva únicamente en memoria hasta recargar la página.</p></div>
+          <div class="heading">
+            <div>
+              <p class="eyebrow">INTEGRACIÓN</p>
+              <h1>Configuración API</h1>
+              <p class="muted">Ajusta las rutas de tu backend Spring Boot.</p>
+            </div>
+          </div>
+          <div class="panel config"><label>URL base de la API <input id="apiBase" type="url"
+                placeholder="http://localhost:8080/api/v1"></label><label>Endpoint usuarios <input id="userPath"
+                type="text" placeholder="/user"></label><label>Endpoint roles <input id="rolePath" type="text"
+                placeholder="/role"></label><label>Token Bearer (opcional) <input id="authToken" type="password"
+                autocomplete="off" placeholder="Solo si la API usa JWT"></label><label class="checkline"><input
+                id="demoMode" type="checkbox"> Activar datos demostrativos (sin llamadas a la API)</label><button
+              id="saveSettings" class="btn primary">Guardar configuración</button>
+            <p class="muted small">Por defecto, todas las acciones se envían como POST con JSON. Las operaciones se
+              identifican con las rutas configuradas en <code>js/config.js</code>. El backend debe implementar los
+              contratos correspondientes y permitir CORS desde el origen del frontend. El token se conserva únicamente
+              en memoria hasta recargar la página.</p>
+          </div>
         </section>
       </main>
     </div>
   </div>
-  <dialog id="editorDialog"><form id="editorForm"><div class="modal-head"><h2 id="dialogTitle">Nuevo registro</h2><button type="button" id="closeDialog" class="icon-btn" aria-label="Cerrar">✕</button></div><div id="editorFields"></div><div class="modal-actions"><button type="button" class="btn secondary" id="cancelDialog">Cancelar</button><button type="submit" class="btn primary" id="submitEditor">Guardar</button></div></form></dialog>
+  <dialog id="editorDialog">
+    <form id="editorForm">
+      <div class="modal-head">
+        <h2 id="dialogTitle">Nuevo registro</h2><button type="button" id="closeDialog" class="icon-btn"
+          aria-label="Cerrar">✕</button>
+      </div>
+      <div id="editorFields"></div>
+      <div class="modal-actions"><button type="button" class="btn secondary" id="cancelDialog">Cancelar</button><button
+          type="submit" class="btn primary" id="submitEditor">Guardar</button></div>
+    </form>
+  </dialog>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
   <script type="module" src="js/app.js"></script>
 </body>
+
 </html>
